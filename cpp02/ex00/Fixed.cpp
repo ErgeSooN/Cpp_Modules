@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oozdiyar <oozdiyar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayaman <ayaman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 16:07:53 by oozdiyar          #+#    #+#             */
-/*   Updated: 2023/06/04 16:07:53 by oozdiyar         ###   ########.fr       */
+/*   Created: 2023/06/04 16:07:53 by ayaman            #+#    #+#             */
+/*   Updated: 2023/06/09 13:53:30 by ayaman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,23 @@ Fixed& Fixed::operator=(const Fixed& fix)
 	_value = fix.getRawBits();
 	return *this;
 }
-
+/*
+	Neden referans kullandık? 
+	1.efektif ve verimli kopyalama -> orjinal nesnenin bellekteki konumunu
+	kopyaladığımızdan dolayı kopylama işlemi gerektirmez.
+	2.İstenmeyen sonsuz döngüleri engellemek
+	3.Bellek kullanımını azaltmak -> büyük neslerin kopyalanmasında referans
+	kullanarak aynı bellek alanını paylaşabiliriz.
+*/
 int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return _value;
 }
+
 void Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	_value = raw;
 }
+

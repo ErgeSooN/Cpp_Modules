@@ -28,13 +28,14 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	_value = roundf(value * (1 << _bits)); // roundf float yuvarlama aracı
+	std::cout << value << " float: " << _value << std::endl;
 	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& fix)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = fix; // nesnenin datasına fixi atıyorum -> 37. satıra bak
+	*this = fix;
 }
 
 Fixed::~Fixed(void)

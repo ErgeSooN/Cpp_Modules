@@ -5,23 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozdiyar <oozdiyar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 16:09:03 by oozdiyar          #+#    #+#             */
-/*   Updated: 2023/06/04 16:09:03 by oozdiyar         ###   ########.fr       */
+/*   Created: 2023/06/05 14:53:09 by oozdiyar          #+#    #+#             */
+/*   Updated: 2023/06/05 14:53:09 by oozdiyar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
-int main(void) 
+int main(void)
 {
-	Fixed a(10);
-	Fixed const b(Fixed( 5.05f ) * Fixed( 2 ));  // buranın sonucu 10.1 gibi bir şey dönüyor 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << " b value"<< std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
+	ClapTrap def;
+	ClapTrap c1("Clap1");
+	ClapTrap c2("Clap2");
+	ClapTrap c3(c1);
+	ClapTrap c4 = c2;
+
+	std::cout << std::endl;
+	while (c1.isAlive() && c2.isAlive())
+	{
+		c1.attack("Clap2");
+		c2.takeDamage(c1.getAttackDamage()); // Damage'i farklı verebiliriz.
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
+	def.beRepaired(10);
+	std::cout << std::endl;
+	
 	return 0;
 }

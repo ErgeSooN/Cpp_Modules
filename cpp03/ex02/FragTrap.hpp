@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozdiyar <oozdiyar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 16:09:03 by oozdiyar          #+#    #+#             */
-/*   Updated: 2023/06/04 16:09:03 by oozdiyar         ###   ########.fr       */
+/*   Created: 2023/06/05 14:56:02 by oozdiyar          #+#    #+#             */
+/*   Updated: 2023/06/05 14:56:02 by oozdiyar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
-int main(void) 
+#include "ClapTrap.hpp"
+#include <iostream>
+
+class FragTrap : public ClapTrap
 {
-	Fixed a(10);
-	Fixed const b(Fixed( 5.05f ) * Fixed( 2 ));  // buranın sonucu 10.1 gibi bir şey dönüyor 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << " b value"<< std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
-}
+public:
+    FragTrap();
+    FragTrap(std::string const& name);
+    FragTrap(FragTrap const& src);
+
+    FragTrap& operator=(FragTrap const& frag);
+
+    ~FragTrap();
+    void highFiveGuys() const;
+    void attack(std::string const& enemy);
+};
+
+#endif
